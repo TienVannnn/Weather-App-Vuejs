@@ -88,30 +88,30 @@ const getWeatherData = async () => {
 };
 const currentData = await getWeatherData();
 // widgets
-onMounted(() => {
-  if (currentData) {
-    const d3Script = document.createElement("script");
-    d3Script.src = "https://d3js.org/d3.v5.min.js";
-    d3Script.async = true;
-    document.head.appendChild(d3Script);
-    window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);
-    window.myWidgetParam.push({
-      id: 1,
-      cityid: currentData.id, // ID thành phố từ API
-      appid: "da66ac3e21a7ff2d9259184a0a8f3b2e",
-      units: unit.value,
-      containerid: "openweathermap-widget-1",
-    });
-    const script = document.createElement("script");
-    script.async = true;
-    script.charset = "utf-8";
-    script.src =
-      "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-    document.body.appendChild(script);
-  } else {
-    console.error("Lỗi.");
-  }
-});
+// onMounted(() => {
+if (currentData) {
+  const d3Script = document.createElement("script");
+  d3Script.src = "https://d3js.org/d3.v5.min.js";
+  d3Script.async = true;
+  document.head.appendChild(d3Script);
+  window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);
+  window.myWidgetParam.push({
+    id: 1,
+    cityid: currentData.id, // ID thành phố từ API
+    appid: "da66ac3e21a7ff2d9259184a0a8f3b2e",
+    units: unit.value,
+    containerid: "openweathermap-widget-1",
+  });
+  const script = document.createElement("script");
+  script.async = true;
+  script.charset = "utf-8";
+  script.src =
+    "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+  document.body.appendChild(script);
+} else {
+  console.error("Lỗi.");
+}
+// });
 // remove city from localStorage
 const router = useRouter();
 const removeCity = () => {
