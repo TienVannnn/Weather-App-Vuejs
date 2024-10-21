@@ -45,4 +45,5 @@ const goToCityView = (city) => {
     },
   });
 };
+await new Promise((res) => setTimeout(res, 100));
 </script>
